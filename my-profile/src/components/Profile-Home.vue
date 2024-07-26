@@ -96,19 +96,19 @@ the community.</p>
       <!--个人简述-->
       <hr class="divider" />
       <div class="text-content">
-       
-      <h1>Personal summary</h1>
-      <h2>●Personal description:</h2>
-        <p>I try to exert my organizational and leadership potential, and I hope to pay tribute to the
-team and contribute my strength. For the responsible for each task, I am strict
-Careful attitude to ensure its smooth completion. I maintain a positive attitude towards research and study, and I believe that enthusiasm and continuous efforts are the key to achieving my goals.</p> 
-        <h2>●Future Vision:</h2>
-        <p> Based on the knowledge I have accumulated in computer and communication learning, I hope to
-continue my study in the field of computer vision and machine learning, and at the same time, I am logarithmic
-Cutting-edge technology fields such as word twin and copyright blockchain are interested and eager to have
-the opportunity to understand and explore their academic and application prospects.</p>
-        
+        <h1>Personal summary</h1>
+        <div class="personal-summary">
+          <div class="left-column">
+            <h2>●Personal description:</h2>
+            <p>I try to exert my organizational and leadership potential, and I hope to pay tribute to the team and contribute my strength. For the responsible for each task, I am strict Careful attitude to ensure its smooth completion. I maintain a positive attitude towards research and study, and I believe that enthusiasm and continuous efforts are the key to achieving my goals.</p>
+          </div>
+          <div class="right-column">
+            <h2>●Future Vision:</h2>
+            <p>Based on the knowledge I have accumulated in computer and communication learning, I hope to continue my study in the field of computer vision and machine learning, and at the same time, I am logarithmic Cutting-edge technology fields such as word twin and copyright blockchain are interested and eager to have the opportunity to understand and explore their academic and application prospects.</p>
+          </div>
+        </div>
       </div>
+      
       <hr class="divider" />
      
     </div>
