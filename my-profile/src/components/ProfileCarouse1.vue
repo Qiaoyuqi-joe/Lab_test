@@ -87,8 +87,9 @@ export default {
 }
 
 .slide-show {
-  height: 730px;
-  width: 1200px;
+ 
+  padding-top:56.25%;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -103,10 +104,18 @@ export default {
   text-indent: 20px;
   font-weight: 500;
 }
-.slide-img img {
-  width: 1200px;
+.slide-img {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
+  left: 0;
+}
+
+.slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the container */
 }
 .slide-page {
   right: 15px;
@@ -135,5 +144,15 @@ export default {
 .slide-page li:hover,
 .slide-page a:hover {
   color: #1fdd88;
+}
+@media (max-width: 768px) {
+  .slide-show {
+    padding-top: 60%; /* Adjust aspect ratio for mobile if necessary */
+  }
+
+  .slide-img img {
+    object-fit: contain; /* Ensure the image is fully visible */
+  }
+
 }
 </style>

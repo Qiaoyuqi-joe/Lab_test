@@ -2,26 +2,31 @@ body {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 1vw;
 }
 
 .profile {
   display: flex;
+  flex-direction: row;
   width: 100%;
+  height: 100%;
 }
 
 .sidebar {
-  width: 100px;
+  width: 10%;
   background-color: #002147;
   color: white;
-  padding: 20px;
-  height: 100vh;
+  padding: 1em;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   overflow-y: auto;
+  z-index: 1000;
+  font-size: 1rem;
 }
 
 .sidebar ul {
@@ -31,7 +36,7 @@ body {
 }
 
 .sidebar li {
-  margin: 15px 0;
+  margin: 1em 0;
 }
 
 .sidebar a {
@@ -44,39 +49,55 @@ body {
 }
 
 .content {
-  margin-left: 200px;
-  padding: 20px;
+  margin-left: 15%;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  flex: 1;
   overflow-y: auto;
-  height: 100vh;
+  font-size: 1rem;
 }
 
 .header {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+  flex-wrap: nowrap;
 }
 
-.profile-photo, .publication-photo, .projects-photo, .activities-photo, .resources-photo, .news-photo {
-  width: 220px;
-  height: 280px;
-  object-fit: cover;
-  margin-right: 20px;
+.profile-photo {
+  max-width: 10rem;
+  height: auto;
+  border-radius: 50%;
+  margin-right: 1em;
 }
 
 .text-content {
+  flex: 1;
   display: flex;
   flex-direction: column;
   text-align: left;
-  width: 100%;
+}
+
+.text-content p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  margin-bottom: 1em;
+  font-size: 1rem;
 }
 
 h1, h2 {
-  margin: 5px 0;
+  margin: 0.5em 0;
+  font-size: 2rem;
 }
 
 p {
-  margin: 5px 0;
-  line-height: 1.2; /* Adjust line height to reduce spacing */
+  margin: 0.5em 0;
+  line-height: 1.5;
 }
 
 hr.divider {
@@ -84,42 +105,131 @@ hr.divider {
   height: 1px;
   background: #333;
   background-image: linear-gradient(to right, #ccc, #333, #ccc);
-  margin: 20px 0; /* Adjust spacing above and below the line */
-}
-
-.gif-image {
-  display: left;
-  margin: 10px 10px 10px 0; /* Add margin to the right and bottom for spacing */
-  width: 60px; /* Fixed width */
-  height: 20px; /* Fixed height */
+  margin: 1em 0;
 }
 
 .kai-ti {
   font-family: 'STXinwei', '楷体';
-  font-size: 50px;
+  font-size: 2rem;
   color: #0B3880;
-}
-
-.echarts-wordcloud text {
-  fill: #FFFFFF !important;
-}
-
-.two-column-layout {
-  display: flex;
-}
-
-.two-column-layout .left-column,
-.two-column-layout .right-column {
-  flex: 1;
-  margin: 0 10px;
 }
 
 .personal-summary {
   display: flex;
+  justify-content: space-between; /* 保证三列之间均匀分布 */
+  gap: 1rem; /* 增加列之间的间距 */
 }
 
 .personal-summary .left-column,
+.personal-summary .center-column,
 .personal-summary .right-column {
-  flex: 1;
-  margin: 0 10px;
+  flex: 1; /* 每列占据相同的空间 */
+  max-width: 33%; /* 限制每列的最大宽度 */
+  box-sizing: border-box; /* 包括padding和border在宽度内 */
+}
+
+.personal-summary .left-column {
+  text-align: left; /* 左对齐文本 */
+}
+
+.personal-summary .center-column {
+  text-align: center; /* 居中对齐文本 */
+}
+
+.personal-summary .right-column {
+  text-align: right; /* 右对齐文本 */
+}
+
+/* 媒体查询：屏幕宽度小于768px时 */
+@media (max-width: 768px) {
+  body {
+    padding: 5%;
+  }
+
+  .profile {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 20%;
+    padding-top: 40%;
+    height: 100%;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    border-radius: 5%;
+    margin-right: 1em;
+    opacity: 0.7;
+  }
+
+  .sidebar.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .profile-photo {
+    width: 50%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .text-content {
+    align-items: left;
+    text-align: center;
+  }
+
+  .header p {
+    text-align: center;
+  }
+
+  .personal-summary {
+    flex-direction: column; /* 小屏幕下改为垂直堆叠 */
+    gap: 1rem; /* 保持间距 */
+  }
+
+  .personal-summary .left-column,
+  .personal-summary .center-column,
+  .personal-summary .right-column {
+    max-width: 100%; /* 列宽度为100%，堆叠显示 */
+  }
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+p {
+  text-align: left;
+  font-size: 0.5rem;
+}
+
+.mobile-menu {
+  display: block;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1001;
+  cursor: pointer;
+}
+
+.menu-icon {
+  font-size: 2rem;
+  color: #ffbf00;
 }

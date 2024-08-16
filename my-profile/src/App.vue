@@ -13,7 +13,7 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  text-align: center;
+  text-align: left;
   color: #2c3e50;
   margin: 0; /* Adjust margin to ensure it doesn't cut off content */
   padding: 0; /* Add padding if necessary */

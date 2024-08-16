@@ -1,34 +1,29 @@
 <template>
   <div class="news">
-    <nav class="sidebar">
-      <ul>
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/education">Education</router-link></li>
-        <li><router-link to="/projects">Projects</router-link></li>
-        <li><router-link to="/honors">Honors</router-link></li>
-        <li><router-link to="/works">Works</router-link></li>
-        <li><router-link to="/skills">Skills</router-link></li>
-        <li><router-link to="/description">Description</router-link></li>
-        <li><router-link to="/news">News</router-link></li>
-      </ul>
-    </nav>
-    <div class="content">
-      <div class="header">
-        <div class="text-content">
-          <h1>News</h1>
-          <img src="@/assets/new.gif" alt="New GIF" class="gif-image" />
+    <LayoutMain>
+      <template v-slot>
+        <div class="header centered-content">
+          <div class="text-content">
+            <h1>News</h1>
+            <img src="@/assets/new.gif" alt="New GIF" class="gif-image" />
+          </div>
         </div>
-      </div>
-      <div id="pie-chart" style="width: 600px; height: 400px;"></div> <!-- 饼图容器 -->
-    </div>
+        <!-- 修改饼图容器的宽高比为 3:2 -->
+        <div id="pie-chart" class="chart-container"></div> <!-- 饼图容器 -->
+      </template>
+    </LayoutMain>
   </div>
 </template>
 
 <script>
 import * as echarts from 'echarts';
+import LayoutMain from './LayoutMain.vue';
 
 export default {
   name: 'UserNews',
+  components: {
+    LayoutMain
+  },
   mounted() {
     this.initChart();
   },
@@ -75,37 +70,38 @@ export default {
       };
 
       myChart.setOption(option);
+
+      // Adjust chart size when window is resized
+      window.addEventListener('resize', function() {
+        myChart.resize();
+      });
     }
   }
 }
 </script>
 
 <style>
-.news {
-  display: flex;
-}
-
-.sidebar {
-  width: 200px;
-}
-
-.content {
-  flex: 1;
-  padding: 20px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
 
 .gif-image {
   width: 100px;
   height: auto;
+  margin-top: 10px; /* 增加一些顶部间距 */
+  max-width: 100%; /* 确保图像不会超出容器宽度 */
+}
+
+.chart-container {
+  width: 100%; /* 容器宽度为100% */
+  height: 0;
+  padding-bottom: 66.67%; /* 3:2 的比例，100% / 1.5 = 66.67% */
+  position: relative;
 }
 
 #pie-chart {
-  margin-top: 20px;
+  position: absolute;
+  top: 0;
+  
+  width: 100%;
+  height: 100%;
 }
+
 </style>
