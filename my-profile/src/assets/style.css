@@ -204,6 +204,11 @@ hr.divider {
   .personal-summary .right-column {
     max-width: 100%; /* 列宽度为100%，堆叠显示 */
   }
+  
+.menu-icon {
+  font-size: 2rem;
+  color: #ffbf00;
+}
 }
 
 h1 {
@@ -229,7 +234,3 @@ p {
   cursor: pointer;
 }
 
-.menu-icon {
-  font-size: 2rem;
-  color: #ffbf00;
-}
